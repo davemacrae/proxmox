@@ -38,7 +38,7 @@ PBS_EXCLUDE="--exclude /proc \
 # ------------------- export PBS Environment Secrets: ------------------- #
 export PBS_FINGERPRINT=${PBS_FINGERPRINT}
 export PBS_REPOSITORY=${PBS_USER}@pam@${PBS_SERVER_IP}:${PBS_SERVER_PORT}:${PBS_DATASTORE}
-export PBS_PASSWORD=Relic2-Jam-Unlocking
+export PBS_PASSWORD=ChangeMe
 
 # Initialize the backup command
 PBS_BACKUP_COMMAND="proxmox-backup-client backup ${CLIENT_HOSTNAME}.pxar:${BACKUP_PATH} --ns ${PBS_NAMESPACE} ${PBS_EXCLUDE}"

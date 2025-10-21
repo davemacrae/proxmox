@@ -1,6 +1,6 @@
 export PBS_LOG=error
 export PBS_REPOSITORY=pbs.lan:diskstation
-export PBS_PASSWORD=Relic2-Jam-Unlocking
+export PBS_PASSWORD=ChangeMe
 proxmox-backup-client backup miniserver.pxar:/ \
 	-ns non-proxmox \
     --exclude /proc \

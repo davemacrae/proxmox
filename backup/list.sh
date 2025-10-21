@@ -60,7 +60,7 @@ FORCE_INCLUDE_PATH="'/etc/pve'"     # No trailing slash, use full path and no sp
 # export PBS_PASSWORD_FILE=${PBS_PASSWORD_FILE_LOCATION}
 export PBS_FINGERPRINT=${PBS_FINGERPRINT}
 export PBS_REPOSITORY=${PBS_USER}@pbs!${PBS_TOKEN_NAME}@${PBS_SERVER_IP}:${PBS_SERVER_PORT}:${PBS_DATASTORE}
-export PBS_PASSWORD=bfad9031-002c-433b-b2a2-40f1785f3723
+export PBS_PASSWORD=CHANGEME
 
 proxmox-backup-client list
 exit 0
