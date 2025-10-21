@@ -1,12 +1,34 @@
 #cloud-config
 # Install packages
+packages:
+    - qemu-guest-agent
+    - python-is-python3
+    - python3-pip
+    - plocate
+runcmd:
+    - systemctl enable ssh
+    - reboot
 write_files:
+  - path: /home/dave/.ssh/id_ed25519.pub
+    owner: dave:dave
+    content: |
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxURfCV3xPqAN9LV9oAQ7nj0j/pPImRIrvUbYpQMd9t dave@ans201
+  - path: /home/dave/.ssh/id_ed25519
+    content: |
+      -----BEGIN OPENSSH PRIVATE KEY-----
+      b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+      QyNTUxOQAAACCMVEXwld8T6gDfS1faAEO549I/6TyJkSK71G2KUDHfbQAAAJA1xeS2NcXk
+      tgAAAAtzc2gtZWQyNTUxOQAAACCMVEXwld8T6gDfS1faAEO549I/6TyJkSK71G2KUDHfbQ
+      AAAEAESVhEnjA43Ua6QQ53rsHtNrs1UkONyUqaw0oa68s+QIxURfCV3xPqAN9LV9oAQ7nj
+      0j/pPImRIrvUbYpQMd9tAAAAC2RhdmVAYW5zMjAxAQI=
+      -----END OPENSSH PRIVATE KEY-----
+    permissions: '0600'
   - path: /var/spool/cron/crontabs/root
+    owner: dave:dave
     content: |
       @reboot /usr/sbin/iptables -A INPUT -p tcp --dport 22 -j DROP --source 192.168.1.1
     append: true
     permissions: '0600'
-write_files:
   - path: /home/dave/.bashrc
     permissions: '0644'
     owner: dave:dave
@@ -125,9 +147,3 @@ write_files:
       ZXhwb3J0IFFMPS9tZWRpYS9xYml0L21pbmlzZXJ2ZXIvbGlkYXJyLwpleHBvcnQgU0w9L21lZGlh
       L3FiaXQvc2xza2QvCmFsaWFzIHBxPSJwcWl2IC1QIDEsMSAtLXNjYWxlLW1vZGUtc2NyZWVuLWZy
       YWN0aW9uPTAuNSIKYWxpYXMgc3FsaXRlPXNxbGl0ZTMKCmV4cG9ydCBYQ1VSU09SX1NJWkU9MTYK
-packages:
-    - qemu-guest-agent
-    - plocate
-runcmd:
-    - systemctl enable ssh
-    - reboot
