@@ -3,7 +3,7 @@
 VMID=${1:-999}
 RELEASE=${2:-noble}
 STORAGE=local-lvm
-USER=dave
+USER=root
 AUTHORIZED_KEYS=base_authorized_keys
 IMAGE="${RELEASE}-server-cloudimg-amd64.img"
 IMAGE_URL="https://cloud-images.ubuntu.com/${RELEASE}/current/${RELEASE}-server-cloudimg-amd64.img"
