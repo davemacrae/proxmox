@@ -9,12 +9,17 @@ resource "proxmox_virtual_environment_vm" "ubuntu_template" {
   bios        = "ovmf"
   description = "Managed by Terraform"
 
+  operating_system {
+    type = "l26"
+  }
+
   cpu {
     cores = 2
   }
 
   memory {
     dedicated = 2048
+    floating = 2048
   }
 
   efi_disk {
@@ -28,7 +33,7 @@ resource "proxmox_virtual_environment_vm" "ubuntu_template" {
     interface    = "virtio0"
     iothread     = true
     discard      = "on"
-    size         = 8
+    size         = 16
   }
 
   initialization {
@@ -52,5 +57,5 @@ resource "proxmox_virtual_environment_download_file" "ubuntu_cloud_image" {
   datastore_id = "local"
   node_name    = var.virtual_environment_node_name
 
-  url = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+  url = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
 }
