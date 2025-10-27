@@ -1,12 +1,12 @@
 #cloud-config
 # Install packages
+timezone: Europe/London
 packages:
     - qemu-guest-agent
     - python-is-python3
     - python3-pip
     - plocate
 runcmd:
-    - chown -R dave:dave /home/dave
     - systemctl enable ssh
     - reboot
 groups:
@@ -22,6 +22,7 @@ users:
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxURfCV3xPqAN9LV9oAQ7nj0j/pPImRIrvUbYpQMd9t dave@ans
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+PLO2RBFjLQ+YM5xPa64BxRAIeN3muXuoprFxGzQ9n7x4BmG60QNNThurTR8pK5suOrG4OvlkZgdmXHiDoUx2w8L5Rxqo0LUB6q7CKki5xPopaq/xHTE8FW6EbmD2y0/sgSNnqtuYuvFfGLS2aS4Ue3u1nO66y2p5XEh0rsVy7EZDrFuzmK7Q6uYdMtx4O4Ch9U+3svJnYgarqUyBqiIbGBj1sP9kipjOA5JROOeSa8hLGOEGfnjbyK70zEOQPOouhjadNflw/wtNCgnlHaq8TB8thXcAcmRf/1GF1RKkvKLnIO/68nLGv2sxVDK6ox/kAil4MsWZo2AMa8/5jJ2abL++urSq75Opad55VhbqxxCYgbnE/M9nPPmDKhdM+YSRhm+Glaikz6+E1oGMbt2YB7jF9QrDNLXSad69e6YpcyXczzam8kZcPqwUPyBc3dk+sPwHdfXpAruOPzKpURZeViKu/pE9hXqCL89HBR7SP3gK6Xr1sxHA7itwZc4Q8bxgBSjbCHzEP+ib4t4gpIA2ap+pvhSmA8rj652b9ssSeKVc9s9v8wmDICf05Nc+vvoTktJxkZRDx2snxGUVfWrLHRNWbZXuVSTEPet91e3YLSJ71c0rDoRmX9l+cqn2JlxdRmZ1lUv74+8dqZPz2AoRLULx6JABzOHYV59P/uy0Q== root@pve
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWjPrpo3v1Jt3P5nNunMW+0HkY7TZn++6UYTLYkmPZ4xGWAQrCCy0Nwzpu9g+gtRoDDEbDf2sEWwq62ku3uibLOk2tmp25xpHLuUbIDB6M92btpEqNPfUKgxRBN1TQL/gMarhVF5o4J6TwI/56TsyOe8H2CFtALfeQANAZe2VurPzV20dPDM+61+yXxk8r9TsYW6+HM+BhpEr3UYR2VYkvQhEBT1s6RRb/pmKEofSVeGtb5a/+opXUZ8AwElPosxPUd1L1bibXu/cKubpWVNeVNovDn5Tn/OFux8kDQxRjC+wvP1RRTGn203xRi4n7W7jfhA577QOcFfPmGixOevBlySFLU8KoFhJY+hfCsrZMmJxj1GjcBAhxj5138KQfEmL1zipmlKOK8G0QCMbZOuD0tFbMisyNp9XmZIGOHMZDTSC8tF34HEH7vN70eSVkJPL07McIeilKujFZM7zAJNuceIZBS3eWyP421oUaulAEwJmat7Fdm93+J/EZa6dz290= dave@miniserver
     sudo: "ALL=(ALL) NOPASSWD:ALL"
   - name: ansible
     shell: /bin/bash
@@ -30,6 +31,7 @@ users:
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxURfCV3xPqAN9LV9oAQ7nj0j/pPImRIrvUbYpQMd9t dave@ans
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+PLO2RBFjLQ+YM5xPa64BxRAIeN3muXuoprFxGzQ9n7x4BmG60QNNThurTR8pK5suOrG4OvlkZgdmXHiDoUx2w8L5Rxqo0LUB6q7CKki5xPopaq/xHTE8FW6EbmD2y0/sgSNnqtuYuvFfGLS2aS4Ue3u1nO66y2p5XEh0rsVy7EZDrFuzmK7Q6uYdMtx4O4Ch9U+3svJnYgarqUyBqiIbGBj1sP9kipjOA5JROOeSa8hLGOEGfnjbyK70zEOQPOouhjadNflw/wtNCgnlHaq8TB8thXcAcmRf/1GF1RKkvKLnIO/68nLGv2sxVDK6ox/kAil4MsWZo2AMa8/5jJ2abL++urSq75Opad55VhbqxxCYgbnE/M9nPPmDKhdM+YSRhm+Glaikz6+E1oGMbt2YB7jF9QrDNLXSad69e6YpcyXczzam8kZcPqwUPyBc3dk+sPwHdfXpAruOPzKpURZeViKu/pE9hXqCL89HBR7SP3gK6Xr1sxHA7itwZc4Q8bxgBSjbCHzEP+ib4t4gpIA2ap+pvhSmA8rj652b9ssSeKVc9s9v8wmDICf05Nc+vvoTktJxkZRDx2snxGUVfWrLHRNWbZXuVSTEPet91e3YLSJ71c0rDoRmX9l+cqn2JlxdRmZ1lUv74+8dqZPz2AoRLULx6JABzOHYV59P/uy0Q== root@pve
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWjPrpo3v1Jt3P5nNunMW+0HkY7TZn++6UYTLYkmPZ4xGWAQrCCy0Nwzpu9g+gtRoDDEbDf2sEWwq62ku3uibLOk2tmp25xpHLuUbIDB6M92btpEqNPfUKgxRBN1TQL/gMarhVF5o4J6TwI/56TsyOe8H2CFtALfeQANAZe2VurPzV20dPDM+61+yXxk8r9TsYW6+HM+BhpEr3UYR2VYkvQhEBT1s6RRb/pmKEofSVeGtb5a/+opXUZ8AwElPosxPUd1L1bibXu/cKubpWVNeVNovDn5Tn/OFux8kDQxRjC+wvP1RRTGn203xRi4n7W7jfhA577QOcFfPmGixOevBlySFLU8KoFhJY+hfCsrZMmJxj1GjcBAhxj5138KQfEmL1zipmlKOK8G0QCMbZOuD0tFbMisyNp9XmZIGOHMZDTSC8tF34HEH7vN70eSVkJPL07McIeilKujFZM7zAJNuceIZBS3eWyP421oUaulAEwJmat7Fdm93+J/EZa6dz290= dave@miniserver
     sudo: "ALL=(ALL) NOPASSWD:ALL"
 write_files:
   - path: /home/dave/.ssh/id_ed25519.pub
