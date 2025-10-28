@@ -20,3 +20,9 @@ variable "datastore_id" {
   description = "Datastore for VM disks"
   default     = "local-lvm"
 }
+
+variable "num_vm" {
+  type        = string
+  description = "Number of VMs to build"
+  default     = 1
+}
