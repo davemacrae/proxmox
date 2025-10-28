@@ -22,6 +22,14 @@ resource "proxmox_virtual_environment_vm" "ubuntu_template" {
     floating = 2048
   }
 
+  serial_device {
+    device = "socket"
+  }
+
+  vga {
+    type = "std"
+  }
+
   efi_disk {
     datastore_id = var.datastore_id
     type         = "4m"
