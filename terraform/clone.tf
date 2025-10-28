@@ -1,7 +1,6 @@
 resource "proxmox_virtual_environment_vm" "ubuntu_clone" {
-  # count = 1
-  # name      = "ubuntu-clone${count.index + 1}"
-  name      = "ubuntu-clone"
+  count = var.num_vm
+  name      = "ubuntu-clone-${count.index + 1}"
   node_name = var.virtual_environment_node_name
 
   clone {
@@ -17,6 +16,7 @@ resource "proxmox_virtual_environment_vm" "ubuntu_clone" {
   }
 
   initialization {
+    vendor_data_file_id = proxmox_virtual_environment_file.meta_data_cloud_config[count.index].id
     ip_config {
       ipv4 {
         address = "dhcp"
@@ -26,6 +26,5 @@ resource "proxmox_virtual_environment_vm" "ubuntu_clone" {
 }
 
 output "vm_ipv4_address" {
-  # value = proxmox_virtual_environment_vm.ubuntu_clone[count.index].ipv4_addresses[1][0]
-  value = proxmox_virtual_environment_vm.ubuntu_clone.ipv4_addresses[1][0]
+  value = proxmox_virtual_environment_vm.ubuntu_clone[0].ipv4_addresses[1][0]
 }
