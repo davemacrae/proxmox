@@ -162,6 +162,13 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+opentofu/.terraform*
+opentofu/terraform.tfstate*
+opentofu/*tfvars
+
+opentofu/*.out
 terraform/.terraform*
 terraform/terraform.tfstate*
 terraform/*tfvars
+
+terraform/*.out
