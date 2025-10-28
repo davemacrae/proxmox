@@ -7,6 +7,7 @@ resource "proxmox_virtual_environment_file" "meta_data_cloud_config" {
   source_raw {
     data = <<-EOF
     #cloud-config
+    local-hostname: test-ubuntu-${count.index}
     hostname: test-ubuntu-${count.index}
     EOF
 
