@@ -13,15 +13,15 @@ runcmd:
 ansible:
   install_method: pip
   package_name: ansible-core
-  galaxy:
-    actions: ['ansible-galaxy', 'collection', 'install', 'community.general']
+  # galaxy:
+  #   actions: ['ansible-galaxy', 'collection', 'install', 'community.general']
   pull:
     - url: https://github.com/holmanb/vmboot.git
       playbook_names: [ubuntu.yml]
 groups:
   - dave
   - ansible
-  - users
+  # - users
 users:
   - default
   - name: dave
@@ -36,7 +36,7 @@ users:
   - name: ansible
     shell: /bin/bash
     primary_group: ansible
-    group: users
+    groups: users
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxURfCV3xPqAN9LV9oAQ7nj0j/pPImRIrvUbYpQMd9t dave@ans
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+PLO2RBFjLQ+YM5xPa64BxRAIeN3muXuoprFxGzQ9n7x4BmG60QNNThurTR8pK5suOrG4OvlkZgdmXHiDoUx2w8L5Rxqo0LUB6q7CKki5xPopaq/xHTE8FW6EbmD2y0/sgSNnqtuYuvFfGLS2aS4Ue3u1nO66y2p5XEh0rsVy7EZDrFuzmK7Q6uYdMtx4O4Ch9U+3svJnYgarqUyBqiIbGBj1sP9kipjOA5JROOeSa8hLGOEGfnjbyK70zEOQPOouhjadNflw/wtNCgnlHaq8TB8thXcAcmRf/1GF1RKkvKLnIO/68nLGv2sxVDK6ox/kAil4MsWZo2AMa8/5jJ2abL++urSq75Opad55VhbqxxCYgbnE/M9nPPmDKhdM+YSRhm+Glaikz6+E1oGMbt2YB7jF9QrDNLXSad69e6YpcyXczzam8kZcPqwUPyBc3dk+sPwHdfXpAruOPzKpURZeViKu/pE9hXqCL89HBR7SP3gK6Xr1sxHA7itwZc4Q8bxgBSjbCHzEP+ib4t4gpIA2ap+pvhSmA8rj652b9ssSeKVc9s9v8wmDICf05Nc+vvoTktJxkZRDx2snxGUVfWrLHRNWbZXuVSTEPet91e3YLSJ71c0rDoRmX9l+cqn2JlxdRmZ1lUv74+8dqZPz2AoRLULx6JABzOHYV59P/uy0Q== root@pve
