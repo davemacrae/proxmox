@@ -24,5 +24,5 @@ variable "datastore_id" {
 variable "num_vm" {
   type        = string
   description = "Number of VMs to build"
-  default     = 1
+  default     = 3
 }
