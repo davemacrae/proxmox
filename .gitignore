@@ -1,9 +1,10 @@
 
-opentofu/.terraform*
-opentofu/terraform.tfstate*
-opentofu/*tfvars
+opentofu/failed/.terraform*
+opentofu/failed/terraform.tfstate*
+opentofu/failed/*tfvars
 
-opentofu/*.out
+opentofu/failed/*.out
+
 terraform/CreateVM/.terraform*
 terraform/CreateVM/terraform.tfstate*
 terraform/CreateVM/*tfvars
