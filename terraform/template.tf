@@ -22,12 +22,13 @@ resource "proxmox_virtual_environment_vm" "ubuntu_template" {
     floating = 2048
   }
 
+  # The follwoing two stanzas are needed to be able to see cloud-init upadates on cosole
   serial_device {
     device = "socket"
   }
 
   vga {
-    type = "std"
+    type = "serial0"
   }
 
   efi_disk {
