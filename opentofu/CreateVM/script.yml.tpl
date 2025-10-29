@@ -1,5 +1,6 @@
 #cloud-config
 # Install packages
+hostname: ${instance_name}
 timezone: Europe/London
 packages:
   - qemu-guest-agent
